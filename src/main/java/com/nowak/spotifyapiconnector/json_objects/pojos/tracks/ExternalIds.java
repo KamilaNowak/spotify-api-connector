@@ -1,5 +1,4 @@
-package com.nowak.spotifyapiconnector.db.entities;
-
+package com.nowak.spotifyapiconnector.json_objects.pojos.tracks;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,24 +11,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "spotify"
+    "isrc"
 })
-public class ExternalUrls {
+public class ExternalIds {
 
-    @JsonProperty("spotify")
-    private String spotify;
+    @JsonProperty("isrc")
+    private String isrc;
     @JsonIgnore
-
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("spotify")
-    public String getSpotify() {
-        return spotify;
+    @JsonProperty("isrc")
+    public String getIsrc() {
+        return isrc;
     }
 
-    @JsonProperty("spotify")
-    public void setSpotify(String spotify) {
-        this.spotify = spotify;
+    @JsonProperty("isrc")
+    public void setIsrc(String isrc) {
+        this.isrc = isrc;
     }
 
     @JsonAnyGetter

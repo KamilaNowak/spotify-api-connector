@@ -10,61 +10,180 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script>
+        function generateUserURlFun(){
+            var userInput = document.getElementById('user_id').value;
+            var urlLink = "http://localhost:8080/users/";
+            urlLink = urlLink + userInput;
+            userForm.action = urlLink;
+        }
+    </script>
+    <script>
+        function generateTracksURlFun(){
+            var userInput = document.getElementById('track_id').value;
+            var urlLink = "http://localhost:8080/tracks/";
+            urlLink = urlLink + userInput;
+            tracksForm.action = urlLink;
+        }
+    </script>
 </head>
 <body>
 
-<div class="jumbotron text-center" >
+<div class="jumbotron text-center">
     <i class="fa fa-spotify" style="color: #1DB954; font-size:60px"></i>
     <h1>Spotify API Connector</h1>
     <p>By Kamila Nowak</p>
     <p><a href="https://github.com/KamilaNowak"><i class="fa fa-github" style="color:black; font-size:20px"></i></a>
-        <a href="https://www.linkedin.com/in/kamila-nowak-7b267816b/"> <i class="fa fa-linkedin" style="font-size:20px"></i></a>
+        <a href="https://www.linkedin.com/in/kamila-nowak-7b267816b/"> <i class="fa fa-linkedin"
+                                                                          style="font-size:20px"></i></a>
     </p>
-
 </div>
-
 <div class="container">
     <div class="row">
         <div class="col-sm-5">
-            <h3>Type user name</h3>
+            <h3>Type username</h3>
             <p>Then data will be displayed below</p>
-            <div class="input-group">
-                <input type="text" class="form-control form-control-lg" style="border-top-left-radius:100px; border-bottom-left-radius:100px">
-                <a class="btn btn-outline-success" style="font-size:120%;border-top-right-radius:100px; border-bottom-right-radius:100px" href="#">Search <i class="fa fa-search"></i> </a>
-            </div>
+            <form onsubmit="generateUserURlFun()" method="get" id="userForm">
+                <div class="input-group">
+                    <input type="text" id="user_id"  class="form-control form-control-lg"
+                           style="border-top-left-radius:100px; border-bottom-left-radius:100px">
+
+                    <button type="submit" class="btn btn-outline-success"
+                       style="font-size:120%;border-top-right-radius:100px; border-bottom-right-radius:100px" href="">Search
+                        <i class="fa fa-search"></i> </button>
+                </div>
+            </form>
             <hr>
-            Result
-            <select multiple class="form-control" name="sellist2">
-                <option> <span th:text="${response}"/> </option>
+            Users
+            <select multiple class="form-control" n>
+             <option><span th:text="${userData}"></span></option>
             </select>
             <br>
-            <a class="btn btn-outline-warning" style="border-radius:100px">
-                Save search result to database <i class="fa fa-database" style="font-size:20px"></i></a>
+            <a class="btn btn-outline-warning" style="border-radius:100px"> Save query to database <i
+                    class="fa fa-database" style="font-size:20px"></i></a>
         </div>
         <hr>
+        <div class="col-sm-5">
+            <h3>Type track <a  data-toggle="modal" data-target="#track"><i class="fa fa-question-circle"
+                                                                                   style="font-size:30px;color:#1DB954"></i></a>
+            </h3>
+            <p>Then data will be displayed below</p>
+            <form onsubmit="generateTracksURlFun()" id="tracksForm" method="get">
+                <div class="input-group" >
+                    <input type="text" id="track_id" class="form-control form-control-lg"
+                           style="border-top-left-radius:100px; border-bottom-left-radius:100px">
+                    <button class="btn btn-outline-success"
+                       style="font-size:120%;border-top-right-radius:100px; border-bottom-right-radius:100px" type="submit">Search
+                        <i class="fa fa-search"></i> </button>
+                </div>
+            </form>
+            <hr>
+            Tracks
+            <select multiple class="form-control">
+                <option><span th:text="${tracksData}"></span></option>
+            </select>
+            <br>
+            <a class="btn btn-outline-warning" style="border-radius:100px"> Save query to database <i
+                    class="fa fa-database" style="font-size:20px"></i></a>
+        </div>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div class="row">
         <div class="col-sm-5">
             <h3>Type artist</h3>
             <p>Then data will be displayed below</p>
             <div class="input-group">
-                <input type="text" class="form-control form-control-lg" style="border-top-left-radius:100px; border-bottom-left-radius:100px">
-                <a class="btn btn-outline-success" style="font-size:120%;border-top-right-radius:100px; border-bottom-right-radius:100px" href="#">Search <i class="fa fa-search"></i> </a>
+                <input type="text" class="form-control form-control-lg"
+                       style="border-top-left-radius:100px; border-bottom-left-radius:100px">
+                <a class="btn btn-outline-success"
+                   style="font-size:120%;border-top-right-radius:100px; border-bottom-right-radius:100px" href="#">Search
+                    <i class="fa fa-search"></i> </a>
             </div>
             <hr>
-            Result
-            <select multiple class="form-control">
-
+            Artists
+            <select multiple class="form-control" name="sellist2">
+                <option>dd</option>
             </select>
             <br>
-            <a class="btn btn-outline-warning" style="border-radius:100px">
-                Save search result to database <i class="fa fa-database" style="font-size:20px"></i></a>
+            <a class="btn btn-outline-warning" style="border-radius:100px"> Save query to database <i
+                    class="fa fa-database" style="font-size:20px"></i></a>
+        </div>
+        <hr>
+        <div class="col-sm-5">
+            <h3>Type album <a href="#" data-toggle="modal" data-target="#album"><i class="fa fa-question-circle"
+                                                                                   style="font-size:30px;color:#1DB954"></i></a>
+            </h3>
+            <p>Then data will be displayed below</p>
+            <div class="input-group">
+                <input type="text" class="form-control form-control-lg"
+                       style="border-top-left-radius:100px; border-bottom-left-radius:100px">
+                <a class="btn btn-outline-success"
+                   style="font-size:120%;border-top-right-radius:100px; border-bottom-right-radius:100px" href="#">Search
+                    <i class="fa fa-search"></i> </a>
+            </div>
+            <hr>
+            Album
+            <select multiple class="form-control" name="sellist2">
+            </select>
+            <br>
+            <a class="btn btn-outline-warning" style="border-radius:100px"> Save query to database <i
+                    class="fa fa-database" style="font-size:20px"></i></a>
         </div>
     </div>
 </div>
-<br><br>
-</body>
-</html>
+
+<!--modal for tracks-->
+
+<div class="modal fade" id="track" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">How to get track id?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="https://i.imgur.com/gfjTWme.png" class="rounded" style="width:100%;max-width:450px">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--modal for albums-->
+
+<div class="modal fade" id="album" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">How to get album id?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="https://i.imgur.com/gfjTWme.png" class="rounded" style="width:100%;max-width:450px">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
 
 
-<br><br>
+    <br><br><br>
+
+    <footer class="page-footer font-small teal pt-4">
+        <div class="footer-copyright text-center py-3">© 2019 Copyright:
+            <a href="https://github.com/KamilaNowak"> github.com/KamilaNowak</a>
+        </div>
+    </footer>
+</div>
 </body>
 </html>

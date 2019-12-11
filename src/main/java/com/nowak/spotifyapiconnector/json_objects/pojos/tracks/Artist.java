@@ -1,8 +1,6 @@
-
-package com.nowak.spotifyapiconnector.db.entities;
+package com.nowak.spotifyapiconnector.json_objects.pojos.tracks;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -13,53 +11,29 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "display_name",
     "external_urls",
-    "followers",
     "href",
     "id",
-    "images",
+    "name",
     "type",
     "uri"
 })
-public class UserDataModel {
-
-    @JsonProperty("display_name")
-    private String displayName;
+public class Artist {
 
     @JsonProperty("external_urls")
     private ExternalUrls externalUrls;
-
-    @JsonProperty("followers")
-    private Followers followers;
-
     @JsonProperty("href")
     private String href;
-
     @JsonProperty("id")
     private String id;
-
-    @JsonProperty("images")
-    private List<Object> images = null;
-
+    @JsonProperty("name")
+    private String name;
     @JsonProperty("type")
     private String type;
-
     @JsonProperty("uri")
     private String uri;
-
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    @JsonProperty("display_name")
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    @JsonProperty("display_name")
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
 
     @JsonProperty("external_urls")
     public ExternalUrls getExternalUrls() {
@@ -69,16 +43,6 @@ public class UserDataModel {
     @JsonProperty("external_urls")
     public void setExternalUrls(ExternalUrls externalUrls) {
         this.externalUrls = externalUrls;
-    }
-
-    @JsonProperty("followers")
-    public Followers getFollowers() {
-        return followers;
-    }
-
-    @JsonProperty("followers")
-    public void setFollowers(Followers followers) {
-        this.followers = followers;
     }
 
     @JsonProperty("href")
@@ -101,14 +65,14 @@ public class UserDataModel {
         this.id = id;
     }
 
-    @JsonProperty("images")
-    public List<Object> getImages() {
-        return images;
+    @JsonProperty("name")
+    public String getName() {
+        return name;
     }
 
-    @JsonProperty("images")
-    public void setImages(List<Object> images) {
-        this.images = images;
+    @JsonProperty("name")
+    public void setName(String name) {
+        this.name = name;
     }
 
     @JsonProperty("type")
