@@ -49,7 +49,7 @@ public class UserController {
     @GetMapping("/users/{user_id}")
     public String getUserData(OAuth2Authentication details, @PathVariable("user_id") String id, Principal principal, Model model) {
 
-        if(id=="?"){
+        if(id.equals("?")){
             model.addAttribute("msg", "Fill the gap!");
             return "main";
         }
@@ -75,7 +75,7 @@ public class UserController {
 
     @GetMapping("/save/users/{user_id}")
     public String saveUser(OAuth2Authentication details, @PathVariable("user_id") String id,Model model){
-        if(id=="?"){
+        if(id.equals("?")){
             model.addAttribute("msg", "Fill the gap!");
             return "main";
         }
