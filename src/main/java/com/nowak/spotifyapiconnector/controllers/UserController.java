@@ -21,6 +21,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.annotation.PostConstruct;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class UserController {
@@ -54,15 +58,14 @@ public class UserController {
         if(result.getBody().getImages().size()!=0){
             imguri= result.getBody().getImages().get(0).getClass().toString();
         }
-        model.addAttribute("userData","Name : "
-                +result.getBody().getDisplayName()+"\nId : "
-                +result.getBody().getId()+"\nHref : "
-                +result.getBody().getHref()+"\nType :  "
-                +result.getBody().getType()+"\nUri : "
-                +result.getBody().getUri()+"\nImages : "
-                +imguri+"\nFollowers : "
-                +result.getBody().getFollowers().getTotal()+"\nExternals : "
-                +result.getBody().getExternalUrls().getSpotify());
+        model.addAttribute("name",result.getBody().getDisplayName());
+        model.addAttribute("id",result.getBody().getId());
+        model.addAttribute("href",result.getBody().getHref());
+        model.addAttribute("uri",result.getBody().getUri());
+        model.addAttribute("followers",result.getBody().getFollowers());
+        model.addAttribute("type",result.getBody().getType());
+        model.addAttribute("externals",result.getBody().getExternalUrls());
+        model.addAttribute("images",imguri);
         return "main";
     }
 
@@ -107,5 +110,12 @@ public class UserController {
         String token = ((OAuth2AuthenticationDetails) details.getDetails()).getTokenValue();
         System.out.println(token);
         return principal;
+    }
+    @GetMapping("/database")
+    public String showDBPage(Model model){
+        List<UserDataEntity> userDataEntities = new ArrayList<>();
+        userDataEntities=spotifyDataService.findAll();
+        model.addAttribute("userDataEntities",userDataEntities);
+        return "database";
     }
 }

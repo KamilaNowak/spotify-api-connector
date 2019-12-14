@@ -14,6 +14,9 @@ public class SecurityConfigurationClass extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/users/**").authenticated()
                 .antMatchers("/data/**").authenticated()
-                .antMatchers("/**").authenticated();
+                .antMatchers("/**").authenticated()
+        .and()
+        .exceptionHandling()
+        .accessDeniedPage("/error");
     }
 }

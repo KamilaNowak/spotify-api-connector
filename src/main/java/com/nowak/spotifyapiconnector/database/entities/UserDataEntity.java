@@ -7,7 +7,7 @@ import lombok.Getter;
 import javax.persistence.*;
 import java.util.List;
 
-@Getter
+
 @Entity
 @Table(name="usersdata")
 public class UserDataEntity {

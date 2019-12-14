@@ -11,4 +11,10 @@ public class Controller {
     public String openMainPage(Model model){
         return "main";
     }
+
+    @GetMapping("/error")
+    public String showErrorPage(Model model){
+        model.addAttribute("msg", "Something went wrong");
+        return "main";
+    }
 }

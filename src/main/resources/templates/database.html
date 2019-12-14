@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
+<head>
+
+    <title>Spotify API Connector</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="jumbotron text-center">
+    <i class="fa fa-spotify" style="color: #1DB954; font-size:60px"></i>
+    <h1>Database</h1>
+    <h2>Spotify API Connector</h2>
+    <p>By Kamila Nowak</p>
+    <p><a href="https://github.com/KamilaNowak"><i class="fa fa-github" style="color:black; font-size:20px"></i></a>
+        <a href="https://www.linkedin.com/in/kamila-nowak-7b267816b/"> <i class="fa fa-linkedin"
+                                                                          style="font-size:20px"></i></a>
+    </p>
+</div>
+<div class="container-fluid">
+    <br>
+    <p>
+    <form th:action="@{/}">
+        <div class="form-group">
+            <button type="submit" class="btn btn-info" style="border-radius: 45px"> Dashboard</button>
+        </div>
+    </form>
+    </p>
+</div>
+
+<div class="mr-3 ml-3">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Display Name</th>
+            <th>Href</th>
+            <th>Type</th>
+            <th>Uri</th>
+            <th>Images</th>
+            <th>Followers</th>
+            <th>Externals</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="temp : ${userDataEntities}">
+            <td><span th:text="${temp.id}"/></td>
+            <td><span th:text="${temp.displayName}"/></td>
+            <td><span th:text="${temp.href}"/></td>
+            <td><span th:text="${temp.type}"/></td>
+            <td><span th:text="${temp.uri}"/></td>
+            <td><span th:text="${temp.images}"/></td>
+            <td><span th:text="${temp.followers}"/></td>
+            <td><span th:text="${temp.externalUrls}"/></td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+    <br>
+
+    <footer class="page-footer font-small text-center">
+        <div class="footer-copyright text-center py-3">© 2019 Copyright:
+            <a href="https://github.com/KamilaNowak"> github.com/KamilaNowak</a>
+        </div>
+    </footer>
+</body>
+</html>
