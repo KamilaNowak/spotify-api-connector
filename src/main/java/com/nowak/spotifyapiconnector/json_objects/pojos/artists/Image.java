@@ -1,5 +1,5 @@
-package com.nowak.spotifyapiconnector.json_objects.pojos.users;
 
+package com.nowak.spotifyapiconnector.json_objects.pojos.artists;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,23 +12,49 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "spotify"
+    "height",
+    "url",
+    "width"
 })
-public class ExternalUrls {
+public class Image {
 
-    @JsonProperty("spotify")
-    private String spotify;
+    @JsonProperty("height")
+    private Integer height;
+    @JsonProperty("url")
+    private String url;
+    @JsonProperty("width")
+    private Integer width;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("spotify")
-    public String getSpotify() {
-        return spotify;
+    @JsonProperty("height")
+    public Integer getHeight() {
+        return height;
     }
 
-    @JsonProperty("spotify")
-    public void setSpotify(String spotify) {
-        this.spotify = spotify;
+    @JsonProperty("height")
+    public void setHeight(Integer height) {
+        this.height = height;
+    }
+
+    @JsonProperty("url")
+    public String getUrl() {
+        return url;
+    }
+
+    @JsonProperty("url")
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    @JsonProperty("width")
+    public Integer getWidth() {
+        return width;
+    }
+
+    @JsonProperty("width")
+    public void setWidth(Integer width) {
+        this.width = width;
     }
 
     @JsonAnyGetter

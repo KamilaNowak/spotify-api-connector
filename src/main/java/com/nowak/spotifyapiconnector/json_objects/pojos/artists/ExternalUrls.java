@@ -1,5 +1,5 @@
-package com.nowak.spotifyapiconnector.json_objects.pojos.users;
 
+package com.nowak.spotifyapiconnector.json_objects.pojos.artists;
 
 import java.util.HashMap;
 import java.util.Map;

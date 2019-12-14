@@ -1,5 +1,5 @@
 
-package com.nowak.spotifyapiconnector.json_objects.pojos.users;
+package com.nowak.spotifyapiconnector.json_objects.pojos.artists;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,54 +13,41 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "display_name",
-        "external_urls",
-        "followers",
-        "href",
-        "id",
-        "images",
-        "type",
-        "uri"
+    "external_urls",
+    "followers",
+    "genres",
+    "href",
+    "id",
+    "images",
+    "name",
+    "popularity",
+    "type",
+    "uri"
 })
-
-public class UserDataModel {
-
-    @JsonProperty("display_name")
-    private String displayName;
+public class ArtistsDataModel {
 
     @JsonProperty("external_urls")
     private ExternalUrls externalUrls;
-
     @JsonProperty("followers")
     private Followers followers;
-
+    @JsonProperty("genres")
+    private List<String> genres = null;
     @JsonProperty("href")
     private String href;
-
     @JsonProperty("id")
     private String id;
-
     @JsonProperty("images")
-    private List<Object> images = null;
-
+    private List<Image> images = null;
+    @JsonProperty("name")
+    private String name;
+    @JsonProperty("popularity")
+    private Integer popularity;
     @JsonProperty("type")
     private String type;
-
     @JsonProperty("uri")
     private String uri;
-
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    @JsonProperty("display_name")
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    @JsonProperty("display_name")
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
 
     @JsonProperty("external_urls")
     public ExternalUrls getExternalUrls() {
@@ -80,6 +67,16 @@ public class UserDataModel {
     @JsonProperty("followers")
     public void setFollowers(Followers followers) {
         this.followers = followers;
+    }
+
+    @JsonProperty("genres")
+    public List<String> getGenres() {
+        return genres;
+    }
+
+    @JsonProperty("genres")
+    public void setGenres(List<String> genres) {
+        this.genres = genres;
     }
 
     @JsonProperty("href")
@@ -103,13 +100,33 @@ public class UserDataModel {
     }
 
     @JsonProperty("images")
-    public List<Object> getImages() {
+    public List<Image> getImages() {
         return images;
     }
 
     @JsonProperty("images")
-    public void setImages(List<Object> images) {
+    public void setImages(List<Image> images) {
         this.images = images;
+    }
+
+    @JsonProperty("name")
+    public String getName() {
+        return name;
+    }
+
+    @JsonProperty("name")
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @JsonProperty("popularity")
+    public Integer getPopularity() {
+        return popularity;
+    }
+
+    @JsonProperty("popularity")
+    public void setPopularity(Integer popularity) {
+        this.popularity = popularity;
     }
 
     @JsonProperty("type")

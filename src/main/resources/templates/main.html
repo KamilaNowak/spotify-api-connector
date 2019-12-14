@@ -2,7 +2,7 @@
 <html lang="en">
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>Bootstrap Example</title>
+    <title>Spotify API Connector</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script>
-        function generateUserURlFun(){
+        function generateUserURlFun() {
             var userInput = document.getElementById('user_id').value;
             var urlLink = "http://localhost:8080/users/";
             urlLink = urlLink + userInput;
@@ -20,11 +20,17 @@
         }
     </script>
     <script>
-        function generateTracksURlFun(){
+        function generateTracksURlFun() {
             var userInput = document.getElementById('track_id').value;
             var urlLink = "http://localhost:8080/tracks/";
             urlLink = urlLink + userInput;
             tracksForm.action = urlLink;
+        }
+        function generateSaveUserUri() {
+            var userInput = document.getElementById('user_id').value;
+            var urlLink = "http://localhost:8080/save/users/";
+            urlLink = urlLink + userInput;
+            saveUserForm.action = urlLink;
         }
     </script>
 </head>
@@ -40,52 +46,65 @@
     </p>
 </div>
 <div class="container">
+    <div th:if="${msg}" class="alert alert-info alert-dismissible fade show text-center" role="alert" th:text="${msg}">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong><span th:text="${msg}"/></strong>
+    </div>
+
     <div class="row">
         <div class="col-sm-5">
             <h3>Type username</h3>
             <p>Then data will be displayed below</p>
             <form onsubmit="generateUserURlFun()" method="get" id="userForm">
                 <div class="input-group">
-                    <input type="text" id="user_id"  class="form-control form-control-lg"
+                    <input type="text" id="user_id" class="form-control form-control-lg"
                            style="border-top-left-radius:100px; border-bottom-left-radius:100px">
 
                     <button type="submit" class="btn btn-outline-success"
-                       style="font-size:120%;border-top-right-radius:100px; border-bottom-right-radius:100px" href="">Search
-                        <i class="fa fa-search"></i> </button>
+                            style="font-size:120%;border-top-right-radius:100px; border-bottom-right-radius:100px"
+                            href="">Search
+                        <i class="fa fa-search"></i></button>
                 </div>
             </form>
             <hr>
             Users
-            <select multiple class="form-control" n>
-             <option><span th:text="${userData}"></span></option>
-            </select>
+
+            <textarea class="form-control" rows="8">
+   <a th:text="${userData}"></a>
+</textarea>
             <br>
-            <a class="btn btn-outline-warning" style="border-radius:100px"> Save query to database <i
-                    class="fa fa-database" style="font-size:20px"></i></a>
+            <form onsubmit="generateSaveUserUri()" method="get" id="saveUserForm">
+                <button type="submit" class="btn btn-outline-warning" style="border-radius:100px;color:black"> Save query to
+                    database <i
+                            class="fa fa-database" style="font-size:20px"></i></button> <i class="fa fa-exclamation" style="font-size: 23px;color:red;" data-toggle="tooltip" data-placement="top" title="Remember to type id to input before saving to database"></i>
+            </form>
         </div>
         <hr>
         <div class="col-sm-5">
-            <h3>Type track <a  data-toggle="modal" data-target="#track"><i class="fa fa-question-circle"
-                                                                                   style="font-size:30px;color:#1DB954"></i></a>
+            <h3>Type track <a data-toggle="modal" data-target="#track"><i class="fa fa-question-circle"
+                                                                          style="font-size:30px;color:#1DB954"></i></a>
             </h3>
             <p>Then data will be displayed below</p>
             <form onsubmit="generateTracksURlFun()" id="tracksForm" method="get">
-                <div class="input-group" >
+                <div class="input-group">
                     <input type="text" id="track_id" class="form-control form-control-lg"
                            style="border-top-left-radius:100px; border-bottom-left-radius:100px">
                     <button class="btn btn-outline-success"
-                       style="font-size:120%;border-top-right-radius:100px; border-bottom-right-radius:100px" type="submit">Search
-                        <i class="fa fa-search"></i> </button>
+                            style="font-size:120%;border-top-right-radius:100px; border-bottom-right-radius:100px"
+                            type="submit">Search
+                        <i class="fa fa-search"></i></button>
                 </div>
             </form>
             <hr>
             Tracks
-            <select multiple class="form-control">
-                <option><span th:text="${tracksData}"></span></option>
-            </select>
+            <textarea class="form-control" rows="8">
+   <a th:text="${userData}"></a>
+</textarea>
             <br>
-            <a class="btn btn-outline-warning" style="border-radius:100px"> Save query to database <i
-                    class="fa fa-database" style="font-size:20px"></i></a>
+            <a class="btn btn-outline-warning" style="border-radius:100px; color:black"> Save query to database <i
+                    class="fa fa-database" style="font-size:20px"></i></a>  <i class="fa fa-exclamation" style="font-size: 23px;color:red;" data-toggle="tooltip" data-placement="top" title="Remember to type id to input before saving to database"></i>
         </div>
     </div>
     <br>
@@ -103,13 +122,13 @@
                     <i class="fa fa-search"></i> </a>
             </div>
             <hr>
-            Artists
-            <select multiple class="form-control" name="sellist2">
-                <option>dd</option>
-            </select>
+            Artist
+            <textarea class="form-control" rows="8">
+   <a th:text="${userData}"></a>
+</textarea>
             <br>
             <a class="btn btn-outline-warning" style="border-radius:100px"> Save query to database <i
-                    class="fa fa-database" style="font-size:20px"></i></a>
+                    class="fa fa-database" style="font-size:20px"></i></a>  <i class="fa fa-exclamation" style="font-size: 23px;color:red;" data-toggle="tooltip" data-placement="top" title="Remember to type id to input before saving to database"></i>
         </div>
         <hr>
         <div class="col-sm-5">
@@ -126,11 +145,12 @@
             </div>
             <hr>
             Album
-            <select multiple class="form-control" name="sellist2">
-            </select>
+            <textarea class="form-control" rows="8">
+   <a th:text="${userData}"></a>
+</textarea>
             <br>
             <a class="btn btn-outline-warning" style="border-radius:100px"> Save query to database <i
-                    class="fa fa-database" style="font-size:20px"></i></a>
+                    class="fa fa-database" style="font-size:20px"></i></a>  <i class="fa fa-exclamation" style="font-size: 23px;color:red;" data-toggle="tooltip" data-placement="top" title="Remember to type id to input before saving to database"></i>
         </div>
     </div>
 </div>
@@ -185,5 +205,6 @@
         </div>
     </footer>
 </div>
+<br><br><br>
 </body>
 </html>
