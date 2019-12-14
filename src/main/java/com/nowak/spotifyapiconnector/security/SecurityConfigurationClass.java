@@ -14,7 +14,6 @@ public class SecurityConfigurationClass extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/users/**").authenticated()
                 .antMatchers("/data/**").authenticated()
-                .antMatchers("/tracks/**").authenticated()
                 .antMatchers("/**").authenticated();
     }
 }

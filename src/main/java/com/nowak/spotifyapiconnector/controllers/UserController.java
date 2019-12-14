@@ -68,12 +68,25 @@ public class UserController {
 
     @GetMapping("/save/users/{user_id}")
     public String saveUser(OAuth2Authentication details, @PathVariable("user_id") String id,Model model){
-        String token = ((OAuth2AuthenticationDetails) details.getDetails()).getTokenValue();
+        String token=null;
+        try {
+             token = ((OAuth2AuthenticationDetails) details.getDetails()).getTokenValue();
+        }
+        catch(Exception e){
+            model.addAttribute("msg", "Invalid token");
+        }
         httpHeaders.add("Authorization", "Bearer " + token);
         HttpEntity httpEntity = new HttpEntity(httpHeaders);
-        ResponseEntity<UserDataModel> userDataModel = restTemplate.exchange(SPOTIFY_URI + id,
-                HttpMethod.GET, httpEntity,
-                UserDataModel.class);
+        ResponseEntity<UserDataModel> userDataModel = null;
+        try {
+           userDataModel = restTemplate.exchange(SPOTIFY_URI + id,
+                    HttpMethod.GET, httpEntity,
+                    UserDataModel.class);
+        }
+        catch(Exception e){
+            model.addAttribute("msg", "Cannot find object!");
+
+        }
         try {
             UserDataModel modelToSave = userDataModel.getBody();
             UserDataEntity userDataEntity = converter.convert(modelToSave);
@@ -84,7 +97,9 @@ public class UserController {
             e.printStackTrace();
             model.addAttribute("msg", "Something went wrong.");
         }
-        return "main";
+        finally {
+            return "main";
+        }
     }
 
     @GetMapping("/user")

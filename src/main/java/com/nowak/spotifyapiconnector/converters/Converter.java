@@ -1,6 +1,9 @@
 package com.nowak.spotifyapiconnector.converters;
 
+
+
 import com.nowak.spotifyapiconnector.database.entities.UserDataEntity;
+
 import com.nowak.spotifyapiconnector.json_objects.pojos.users.UserDataModel;
 
 public class Converter {
@@ -26,4 +29,5 @@ public class Converter {
         }
         return userDataEntity;
     }
+
 }
