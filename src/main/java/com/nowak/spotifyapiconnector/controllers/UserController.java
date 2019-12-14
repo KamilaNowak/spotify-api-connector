@@ -62,9 +62,9 @@ public class UserController {
         model.addAttribute("id",result.getBody().getId());
         model.addAttribute("href",result.getBody().getHref());
         model.addAttribute("uri",result.getBody().getUri());
-        model.addAttribute("followers",result.getBody().getFollowers());
+        model.addAttribute("followers",result.getBody().getFollowers().getTotal());
         model.addAttribute("type",result.getBody().getType());
-        model.addAttribute("externals",result.getBody().getExternalUrls());
+        model.addAttribute("externals",result.getBody().getExternalUrls().getSpotify());
         model.addAttribute("images",imguri);
         return "main";
     }
