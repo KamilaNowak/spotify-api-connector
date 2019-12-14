@@ -14,7 +14,7 @@
     <script>
         function generateUserURlFun() {
             var userInput = document.getElementById('user_id').value;
-            var urlLink = "https://spot-api-db.herokuapp.com//users/";
+            var urlLink = "https://spot-api-db.herokuapp.com/users/";
             urlLink = urlLink + userInput;
             userForm.action = urlLink;
         }
@@ -74,14 +74,22 @@
             <div class="card bg-light">
                 <div class="card-body ">
                     <p class="card-text">
-                        Id :  <span th:text="${id}"/><br>
-                        Name:  <span th:text="${name}"/><br>
-                        Href:  <span th:text="${href}"/><br>
-                        Uri:  <span th:text="${uri}"/><br>
-                        Followers:  <span th:text="${followers}"/><br>
-                        Type:  <span th:text="${type}"/><br>
-                        Image:  <span th:text="${images}"/><br>
-                        Externals:  <span th:text="${externals}"/>
+                        <span class="badge badge-pill badge-dark">Id</span>
+                        <span class="badge badge-pill badge-light"><span th:text="${id}"/> </span><br>
+                        <span class="badge badge-pill badge-dark">Name</span>
+                        <span class="badge badge-pill badge-light"><span th:text="${name}"/> </span><br>
+                        <span class="badge badge-pill badge-dark">Href</span>
+                        <span class="badge badge-pill badge-light"><span th:text="${href}"/>  </span><br>
+                        <span class="badge badge-pill badge-dark">Uri</span>
+                        <span class="badge badge-pill badge-light"><span th:text="${uri}"/> </span><br>
+                        <span class="badge badge-pill badge-dark">Followers</span>
+                        <span class="badge badge-pill badge-light"><span th:text="${followers}"/> </span><br>
+                        <span class="badge badge-pill badge-dark">Type</span>
+                        <span class="badge badge-pill badge-light"><span th:text="${type}"/> </span><br>
+                        <span class="badge badge-pill badge-dark">Image</span>
+                        <span class="badge badge-pill badge-light"> <span th:text="${images}"/></span><br>
+                        <span class="badge badge-pill badge-dark">Externals</span>
+                        <span class="badge badge-pill badge-light"><span th:text="${externals}"/> </span>
                     </p>
                 </div>
             </div>
