@@ -49,6 +49,10 @@ public class UserController {
     @GetMapping("/users/{user_id}")
     public String getUserData(OAuth2Authentication details, @PathVariable("user_id") String id, Principal principal, Model model) {
 
+        if(id==null){
+            model.addAttribute("msg", "Fill the gap!");
+            return "main";
+        }
         String token = ((OAuth2AuthenticationDetails) details.getDetails()).getTokenValue();
         httpHeaders.add("Authorization", "Bearer " + token);
         HttpEntity httpEntity = new HttpEntity(httpHeaders);
@@ -71,6 +75,10 @@ public class UserController {
 
     @GetMapping("/save/users/{user_id}")
     public String saveUser(OAuth2Authentication details, @PathVariable("user_id") String id,Model model){
+        if(id==null){
+            model.addAttribute("msg", "Fill the gap!");
+            return "main";
+        }
         String token=null;
         try {
              token = ((OAuth2AuthenticationDetails) details.getDetails()).getTokenValue();
