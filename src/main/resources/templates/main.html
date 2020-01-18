@@ -14,14 +14,14 @@
     <script>
         function generateUserURlFun() {
             var userInput = document.getElementById('user_id').value;
-            var urlLink = "localhost:8080/users/";
+            var urlLink = "https://spotify-api-connector.herokuapp.com/users/";
             urlLink = urlLink + userInput;
             userForm.action = urlLink;
         }
 
         function generateSaveUserUri() {
             var userInput = document.getElementById('user_id').value;
-            var urlLink = "localhost:8080/save/users/";
+            var urlLink = "https://spotify-api-connector.herokuapp.com/save/users/";
             urlLink = urlLink + userInput;
             saveUserForm.action = urlLink;
         }
