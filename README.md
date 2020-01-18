@@ -1,6 +1,6 @@
-# Sporify API Connector
+# Spotify API Connector
 
-Web application for fetching users info from Spotify. User can save the query from API Spotify and watch the data which was saved to database.
+Web application for fetching users info from Spotify API. User can save the query  and watch the data which was saved to database.
 
 ### Installing
 
@@ -24,7 +24,6 @@ git clone https://github.com/KamilaNowak/spotify-api-connector.git
 
 * **Kamila Nowak** - *Initial work* - [KamilaNowak](https://github.com/KamilaNowak)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
