@@ -14,19 +14,28 @@
     <script>
         function generateUserURlFun() {
             var userInput = document.getElementById('user_id').value;
-            var urlLink = "https://spotify-api-connector.herokuapp.com/users/";
+            var urlLink = "localhost:8080/users/";
             urlLink = urlLink + userInput;
             userForm.action = urlLink;
         }
 
         function generateSaveUserUri() {
             var userInput = document.getElementById('user_id').value;
-            var urlLink = "https://spotify-api-connector.herokuapp.com/save/users/";
+            var urlLink = "localhost:8080/save/users/";
             urlLink = urlLink + userInput;
             saveUserForm.action = urlLink;
         }
     </script>
 
+    <style>
+        .jumbotron{
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
+            background-size: cover;
+        }
+    </style>
 </head>
 <body>
 
@@ -65,7 +74,7 @@
 
                     <button type="submit" class="btn btn-outline-success"
                             style="font-size:120%;border-top-right-radius:100px; border-bottom-right-radius:100px"
-                            href="">Search
+                            >Search
                         <i class="fa fa-search"></i></button>
                 </div>
             </form>
