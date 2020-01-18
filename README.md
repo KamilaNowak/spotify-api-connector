@@ -18,7 +18,7 @@ git clone https://github.com/KamilaNowak/spotify-api-connector.git
 * [PostgreSQL](https://www.postgresql.org/) - Database
 * [Bootstrap 4](https://getbootstrap.com/) - CSS framework
 * [Thymeleaf](https://www.thymeleaf.org/) - Template engine for HTMLs
-* [Heroku](https://dashboard.heroku.com/) - Server whwre app is deployed
+* [Heroku](https://dashboard.heroku.com/) - Server where app is deployed
 
 ## Author
 
